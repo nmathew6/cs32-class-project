@@ -17,14 +17,14 @@ public:
         numFemales(0), numCases(0) {} //add
   
     //complete these
-    int getNumMentalI() { return numMentalI; }
-    int getFleeingCount() { return fleeingCount; }
-    int getCasesOver65() { return casesOver65; }
-    int getCasesUnder18() { return casesUnder18; }
+    int getNumMentalI() const{ return numMentalI; }
+    int getFleeingCount() const{ return fleeingCount; }
+    int getCasesOver65() const { return casesOver65; }
+    int getCasesUnder18() const { return casesUnder18; }
     raceDemogData& getRacialData() {return racialData;}
-    int getnumMales() { return numMales; }
-    int getnumFemales() { return numFemales; }
-    int getNumberOfCases() { return numCases; }
+    int getnumMales() const{ return numMales; }
+    int getnumFemales() const{ return numFemales; }
+    int getNumberOfCases() const{ return numCases; }
 
     //add any others needed
     friend std::ostream& operator<<(std::ostream &out, psCombo& PD);

@@ -10,7 +10,7 @@
 
 /* print state data - as aggregate of all the county data */
 std::ostream& operator<<(std::ostream &out, demogCombo &SD) {
-    out << "State Demographic Info: State Info: " << SD.getState() << endl;
+    out << "State Demographic Info: State Info: " << SD.getRegionName() << endl;
     out << "Number of Counties: " << SD.getNumCounties() << endl;
     out << fixed << showpoint << setprecision(2);
     out << "Population info:" << endl;

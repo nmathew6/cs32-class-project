@@ -24,7 +24,7 @@ class demogCombo : public demogData {
   int getNumCounties() { return numCounties; }
   void setNumCounties() {numCounties++; }
 
-  void addXtoAggregate(shared_ptr<demogData> a) { 
+  void addData(shared_ptr<demogData> a) { 
     popOver65 = (a->getPopOver65Count()+getPopOver65Count())/(a->getPop()+getPop())*100.0;
     popUnder18 = (a->getPopUnder18Count()+getPopUnder18Count())/(a->getPop()+getPop())*100.0;  
     popUnder5 = (a->getPopUnder5Count()+getPopUnder5Count())/(a->getPop()+getPop())*100.0;
