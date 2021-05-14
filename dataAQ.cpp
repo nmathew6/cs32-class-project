@@ -84,6 +84,7 @@ void dataAQ::createComboPoliceData(std::vector<shared_ptr<psData>> theData) {
   auto current = make_shared<psCombo>();
   sort(theData.begin(), theData.end(), compareState);
   current->setName(theData[0]->getState());
+  current->addState(theData[0]->getState());
   for (int i = 0; i < theData.size(); i++)
   {
     psData current_data = *theData[i];
@@ -92,6 +93,7 @@ void dataAQ::createComboPoliceData(std::vector<shared_ptr<psData>> theData) {
       allComboPoliceData.insert(std::pair<string, shared_ptr<psCombo>>(current->getRegionName(), current));
       current = make_shared<psCombo>();
       current->setName(current_data.getState());
+      current->addState(current_data.getState());
     }
     current->addData(theData[i]);
   }
