@@ -5,7 +5,7 @@
 
 /* print state data - as aggregate of all incidents in this state */
 std::ostream& operator<<(std::ostream &out, psCombo& PD) {
-    out << "**Police shooting incidents:State Info: " << PD.getState();
+    out << "**Police shooting incidents:State Info: " << PD.getRegionName();
     out << "\nNumber of incidents: " << PD.getNumberOfCases();
     out << std::setprecision(2) << std::fixed;
     out << "\nIncidents with age \n(over 65): " << PD.getCasesOver65();
