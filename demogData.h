@@ -27,12 +27,13 @@ class demogData : public regionData  {
     double getPopUnder5() { return popUnder5; }
     double getPov() { return belowPovertyLevel; }
   
-    double getPopOver65Count() { return ((popOver65 * static_cast<double>(population)/100)); }
-    double getPopUnder18Count() { return ((popUnder18 * static_cast<double>(population)/100)); }
-    double getPopUnder5Count() { return ((popUnder5 * static_cast<double>(population)/100)); }
-    double getBAupCount() { return ((popBachelors * static_cast<double>(population)/100)); }
-    double getHSupCount() { return ((popHighSchool * static_cast<double>(population)/100)); }
-    double getPovCount()  { return ((belowPovertyLevel * static_cast<double>(population)/100));  }
+    //round?
+    double getPopOver65Count() { return round((popOver65 * static_cast<double>(population)/100)); }
+    double getPopUnder18Count() { return round((popUnder18 * static_cast<double>(population)/100)); }
+    double getPopUnder5Count() { return round((popUnder5 * static_cast<double>(population)/100)); }
+    double getBAupCount() { return round((popBachelors * static_cast<double>(population)/100)); }
+    double getHSupCount() { return round((popHighSchool * static_cast<double>(population)/100)); }
+    double getPovCount()  { return round((belowPovertyLevel * static_cast<double>(population)/100));  }
 
     raceDemogData& getRacialData() { return racialData; }
 
