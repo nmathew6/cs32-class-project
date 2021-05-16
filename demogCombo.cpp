@@ -29,7 +29,7 @@ std::ostream& operator<<(std::ostream &out, demogCombo &SD) {
 
 //aggregated poverty data
 std::ostream& operator<<(std::ostream &out, demogCombo &SD) {
-    out << "Combo Demographic Info: key: " << SD.getPovKey() << endl;
+    //out << "Combo Demographic Info: key: " << SD.getPovKey() << endl;
     out << "Combo Info: " << SD.printStatesWithSize() << endl;
     out << "Number of Counties: " << SD.getNumCounties() << " County Demographics Info: comboData, many" << endl;
     out << fixed << showpoint << setprecision(2);
