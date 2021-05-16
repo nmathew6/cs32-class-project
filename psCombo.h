@@ -14,7 +14,7 @@ public:
     psCombo() : regionData() {}
     psCombo(string inS) : regionData(inS), numMentalI(0), fleeingCount(0),
         casesOver65(0), casesUnder18(0), racialData(), numMales(0),
-        numFemales(0), numCases(0) {} //add
+        numFemales(0), numCases(0), raceKey("") {} //add
   
     //complete these
     int getNumMentalI() const{ return numMentalI; }
@@ -25,6 +25,9 @@ public:
     int getnumMales() const{ return numMales; }
     int getnumFemales() const{ return numFemales; }
     int getNumberOfCases() const{ return numCases; }
+
+    string getRaceKey() const { return raceKey; }
+    void setRaceKey(string theKey) { raceKey = theKey; }
 
     //add any others needed
     friend std::ostream& operator<<(std::ostream &out, psCombo& PD);
@@ -38,26 +41,26 @@ public:
         }
         if (a->getRace() == "A") {
             racialData.addAsianCount(1);
-            racialData.addCommunityCount(1);
+            // racialData.addCommunityCount(1);
         }
         if (a->getRace() == "B") {
             racialData.addBlackCount(1);
-            racialData.addCommunityCount(1);
+            // racialData.addCommunityCount(1);
         }
         if (a->getRace() == "H") {
             racialData.addLatinxCount(1);
         if (a->getRace() == "N")
             racialData.addFirstNationCount(1);
-            racialData.addCommunityCount(1);
+            // racialData.addCommunityCount(1);
         }
         if (a->getRace() == "O" || a->getRace() == "") {
             racialData.addOtherCount(1);
-            racialData.addCommunityCount(1);
+            // racialData.addCommunityCount(1);
         }
         if (a->getRace() == "W") {
             racialData.addWhiteCount(1);
             racialData.addWhiteNHCount(1);
-            racialData.addCommunityCount(1);
+            // racialData.addCommunityCount(1);
         }
         if (a->getAge() > 65)
             casesOver65++;
@@ -80,7 +83,9 @@ protected:
     double numCases;
     double numMales;
     double numFemales;
-    raceDemogData racialData;    
+    raceDemogData racialData;
+
+    string raceKey;    
 };
 
 #endif

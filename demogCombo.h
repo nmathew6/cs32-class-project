@@ -19,10 +19,14 @@ class demogCombo : public demogData {
   demogCombo(demogData DD) : 
         demogData(DD.getRegionName(), DD.getState(), DD.getPopOver65(), DD.getPopUnder18(), DD.getPopUnder5(), 
         DD.getBAup(), DD.getHSup(), DD.getPov(), DD.getPop(), DD.getRacialData()), numCounties(0) {}
+  demogCombo(string inN) : demogData(inN), numCounties(0), povKey("") {}
       
 //fill in
   int getNumCounties() { return numCounties; }
   void setNumCounties() {numCounties++; }
+
+  string getPovKey() const { return povKey; }
+  void setPovKey(string theKey) { povKey = theKey; }
 
   void addData(shared_ptr<demogData> a) { 
     popOver65 = (a->getPopOver65Count()+getPopOver65Count())/(a->getPop()+getPop())*100.0;
@@ -36,48 +40,10 @@ class demogCombo : public demogData {
     numCounties++;
   }
 
-  // void addOver65(demogData a) { 
-  //   popOver65 = (a.getPopOver65Count()+getPopOver65Count())/(a.getPop()+getPop())*100.0;
-  //   }
-  // void addUnder18(demogData a) { 
-  //   popUnder18 = (a.getPopUnder18Count()+getPopUnder18Count())/(a.getPop()+getPop())*100.0;  
-  //   }
-  // void addUnder5(demogData a) { 
-  //   popUnder5 = (a.getPopUnder5Count()+getPopUnder5Count())/(a.getPop()+getPop())*100.0;
-  //   }
-  // void addBAup(demogData a) { 
-  //   popBachelors = (a.getBAupCount()+getBAupCount())/(a.getPop()+getPop())*100.0; 
-  //   }
-  // void addHSup(demogData a) { 
-  //   popHighSchool = (a.getHSupCount()+getHSupCount())/(a.getPop()+getPop())*100.0; 
-  //   }
-  // void addPOV(demogData a) { 
-  //   belowPovertyLevel = (a.getPovCount()+getPovCount())/(a.getPop()+getPop())*100.0;
-  //   }
-  // void addTotalPop(demogData a) { 
-  //   population += a.getPop(); 
-  //   }
-
-  // void addNumCounties(demogData a) {
-  //   numCounties++;
-  //   }
-
-  // demogCombo& operator+=(demogData dd) {
-  //   this->addOver65(dd);
-  //   this->addUnder18(dd);
-  //   this->addUnder5(dd);
-  //   this->addBAup(dd);
-  //   this->addHSup(dd);
-  //   this->addPOV(dd);
-  //   this->addTotalPop(dd);
-  //   this->addNumCounties(dd);
-  //   this->getRacialData() += dd.getRacialData();
-  //   return *this;
-  //   }
-
   friend std::ostream& operator<<(std::ostream &out, demogCombo &SD);
 
 private:
     int numCounties;
+    string povKey;
 };
 #endif

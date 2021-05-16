@@ -16,6 +16,7 @@ using namespace std;
 class demogData : public regionData  {
   public:    
     demogData() : regionData(" ", " ", 0), popOver65(0), popUnder18(0), popUnder5(0), popBachelors(0), popHighSchool(0), belowPovertyLevel(0), racialData() {}
+    demogData(string inN) : regionData(inN), popOver65(0), popUnder18(0), popUnder5(0), popBachelors(0), popHighSchool(0), belowPovertyLevel(0), racialData() {}
     demogData(string inN, string inS, double in65, double in18, double in5, double BAup, double HSup, double poverty, double totPop14, raceDemogData race) :
       regionData(inN, inS, totPop14), popOver65(in65), popUnder18(in18), popUnder5(in5), popBachelors(BAup), popHighSchool(HSup), belowPovertyLevel(poverty), racialData(race) {}
 

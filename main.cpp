@@ -25,11 +25,16 @@ int main() {
         //std::cout << *obj << std::endl;
     //}
     
-    theAnswers.createComboDemogData((std::vector<shared_ptr<demogData> >&)theDemogData);
-    theAnswers.createComboPoliceData((std::vector<shared_ptr<psData> >&)thePoliceData);
+    theAnswers.createComboDemogDataKey((std::vector<shared_ptr<demogData> >&)theDemogData);
+    cout << *theAnswers.getComboDemogData("KeyBelowPovAboveThirtyPer");
+
+    theAnswers.createComboPoliceDataKey((std::vector<shared_ptr<psData> >&)thePoliceData);
+    cout << *theAnswers.getComboPoliceData("KeyAsianVictim");
+    // theAnswers.createComboDemogData((std::vector<shared_ptr<demogData> >&)theDemogData);
+    // theAnswers.createComboPoliceData((std::vector<shared_ptr<psData> >&)thePoliceData);
 
     
-    cout << theAnswers << endl;
+    //cout << theAnswers << endl;
     /*
     cout << "*** the state that needs the most pre-schools**" << endl;
     string needPK = theAnswers.youngestPop();

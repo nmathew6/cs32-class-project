@@ -32,6 +32,13 @@ class regionData {
         s += "total states: " + std::to_string(stateS.size());
         return s;
     }
+    string printStatesWithSize() const{
+      string s;
+      for (std::set<string>::iterator it=stateS.begin(); it != stateS.end(); it++)
+        s += *it + ", ";
+      s+= "total states: " + std::to_string(stateS.size());
+      return s;
+    }
     void setName(string inN) {regionName = inN;}
     int getPop() const {return population;}
     void setPop(int inPop) {population = inPop;}

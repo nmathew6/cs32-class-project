@@ -13,17 +13,16 @@ string makeKeyExample(shared_ptr<demogData> theData) {
 
   string theKey = "Key";
 
-/*
-  if (theData->getBelowPoverty() < 10) {
+  if (theData->getPov() * 100 < 10) {
     theKey += "BelowPovLessTenPer";
-  } else if (theData->getBelowPoverty() < 20) {
+  } else if (theData->getPov() * 100 < 20) {
     theKey += "BelowPovLessTwentyPer";
-  } else if (theData->getBelowPoverty() < 30) {
+  } else if (theData->getPov() * 100 < 30) {
     theKey += "BelowPovLessThirtyPer";
   } else {
     theKey += "BelowPovAboveThirtyPer";
   }
-*/
+
   return theKey;
 }
 
@@ -31,32 +30,52 @@ string makeKeyExample(shared_ptr<demogData> theData) {
 string makeKeyExample(shared_ptr<psData> theData) {
 
   string theKey = "Key";
-  /*
-  if (theData->getFleeing() == "Foot") {
-    theKey += "FleeingOnFoot";
-  } else if (theData->getFleeing() == "Car") {
-    theKey += "FleeingByCar";
-
-  } else if (theData->getFleeing() == "Other") {
-    theKey += "FleeingOtherMeans";
+  if (theData->getRace() == "W") {
+    theKey += "WhiteVictim";
+  } else if (theData->getRace() == "A") {
+    theKey += "AsianVictim";
+  } else if (theData->getRace() == "H") {
+    theKey += "HispanicVictim";
+  } else if (theData->getRace() == "N") {
+    theKey += "NativeAmericanVictim";
+  } else if (theData->getRace() == "B") {
+    theKey += "AfricanAmericanVictim";
+  } else if (theData->getRace() == "O") {
+    theKey += "OtherRaceVictim";
   } else {
-    theKey += "NotFleeing";
+    theKey += "RaceUnspecifiedVictim";
   }
-  */
   return theKey;
 }
 
 
 //swtich to a function parameter
 void dataAQ::createComboDemogDataKey(std::vector<shared_ptr<demogData> >& theData) {
+  for (auto county : theData)
+  {
+    if (!allComboDemogData[makeKeyExample(county)])
+    {
+      allComboDemogData[makeKeyExample(county)] = make_shared<demogCombo>(county->getState());
+      allComboDemogData[makeKeyExample(county)]->setPovKey(makeKeyExample(county));
+    }
 
-//fill in
-
+    allComboDemogData[makeKeyExample(county)]->addData(county);
+    allComboDemogData[makeKeyExample(county)]->addState(county->getState());
+  }
 }
 
 void dataAQ::createComboPoliceDataKey(std::vector<shared_ptr<psData> >& theData) {
-//fill in
+  for (auto psIncident : theData)
+  {
+    if (!allComboPoliceData[makeKeyExample(psIncident)])
+    {
+      allComboPoliceData[makeKeyExample(psIncident)] = make_shared<psCombo>(psIncident->getState());
+      allComboPoliceData[makeKeyExample(psIncident)]->setRaceKey(makeKeyExample(psIncident));
+    }
 
+    allComboPoliceData[makeKeyExample(psIncident)]->addData(psIncident);
+    allComboPoliceData[makeKeyExample(psIncident)]->addState(psIncident->getState());
+  }
 }
 
 bool compareState(shared_ptr<psData> ps1, shared_ptr<psData> ps2) 
