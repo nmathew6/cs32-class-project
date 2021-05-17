@@ -14,7 +14,7 @@ string makeKeyExample(shared_ptr<demogData> theData) {
   string theKey = "Key";
   double p = (double)theData->getPovCount()*100.0/theData->getPop();
 
-  if (p * 100 < 10) {
+  if (p < 10) {
     theKey += "BelowPovLessTenPer";
   } else if (p < 20) {
     theKey += "BelowPovLessTwentyPer";

@@ -20,32 +20,31 @@ class demogData : public regionData  {
     demogData(string inN, string inS, double in65, double in18, double in5, double BAup, double HSup, double poverty, double totPop14, raceDemogData race) :
       regionData(inN, inS, totPop14), popOver65(in65), popUnder18(in18), popUnder5(in5), popBachelors(BAup), popHighSchool(HSup), belowPovertyLevel(poverty), racialData(race) {}
 
-    double getBAup() { return popBachelors; }
-    double getHSup() { return popHighSchool; }
-    double getPopOver65() { return popOver65; }
-    double getPopUnder18() { return popUnder18; }
-    double getPopUnder5() { return popUnder5; }
-    double getPov() { return belowPovertyLevel; }
+    double getBAup() { return 100.0f*(double)(popBachelors)/getPop();; }
+    double getHSup() { return 100.0f*(double)(popHighSchool)/getPop();; }
+    double getPopOver65() { return 100.0f*(double)(popOver65)/getPop(); }
+    double getPopUnder18() { return 100.0f*(double)(popUnder18)/getPop(); }
+    double getPopUnder5() { return 100.0f*(double)(popUnder5)/getPop(); }
+    double getPov() { return 100.0f*(double)(belowPovertyLevel)/getPop(); }
   
-    //round?
-    double getPopOver65Count() { return round((popOver65 * static_cast<double>(population)/100)); }
-    double getPopUnder18Count() { return round((popUnder18 * static_cast<double>(population)/100)); }
-    double getPopUnder5Count() { return round((popUnder5 * static_cast<double>(population)/100)); }
-    double getBAupCount() { return round((popBachelors * static_cast<double>(population)/100)); }
-    double getHSupCount() { return round((popHighSchool * static_cast<double>(population)/100)); }
-    double getPovCount()  { return round((belowPovertyLevel * static_cast<double>(population)/100));  }
+    int getPopOver65Count() { return popOver65; }
+    int getPopUnder18Count() { return popUnder18; }
+    int getPopUnder5Count() { return popUnder5; }
+    int getBAupCount() { return popBachelors; }
+    int getHSupCount() { return popHighSchool; }
+    int getPovCount()  { return belowPovertyLevel; }
 
     raceDemogData& getRacialData() { return racialData; }
 
     friend std::ostream& operator<<(std::ostream &out, demogData &DD);
 
 protected:
-    double popOver65;
-    double popUnder18;
-    double popUnder5;
-    double popBachelors;
-    double popHighSchool;
-    double belowPovertyLevel;
+    int popOver65;
+    int popUnder18;
+    int popUnder5;
+    int popBachelors;
+    int popHighSchool;
+    int belowPovertyLevel;
     raceDemogData racialData;
 
 };

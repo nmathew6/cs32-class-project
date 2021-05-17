@@ -104,11 +104,11 @@ shared_ptr<demogData> readCSVLineDemog(std::string theLine) {
     string name = getField(ss);
     string state = getField(ss);
     //turn into mathematical percent
-    double popOver65 = stod(getField(ss));
-    double popUnder18 = stod(getField(ss));
-    double popUnder5 = stod(getField(ss));
-    double bachelorDegreeUp = stod(getField(ss));
-    double highSchoolUp = stod(getField(ss));
+    double popOver65 = stod(getField(ss))/100.0;
+    double popUnder18 = stod(getField(ss))/100.0;
+    double popUnder5 = stod(getField(ss))/100.0;
+    double bachelorDegreeUp = stod(getField(ss))/100.0;
+    double highSchoolUp = stod(getField(ss))/100.0;
 
     //now skip over some data
     for (int i=0; i < 4; i++)
@@ -139,14 +139,21 @@ shared_ptr<demogData> readCSVLineDemog(std::string theLine) {
 
     int totalPop2014 = stoi(getField(ss));
 
-    double FirstNationCount = (FirstNation * totalPop2014);
-    double AsianCount = (Asian * totalPop2014);
-    double BlackCount = (Black * totalPop2014);
-    double LatinxCount = (Latinx * totalPop2014);
-    double HIPacificIsleCount = (HIPacificIsle * totalPop2014);
-    double MultiRaceCount = (MultiRace * totalPop2014);
-    double WhiteCount = (White * totalPop2014);
-    double WhiteNHCount = (WhiteNH * totalPop2014);
+    popOver65 = round(popOver65*totalPop2014);
+    popUnder18 = round(popUnder18*totalPop2014);
+    popUnder5 = round(popUnder5*totalPop2014);
+    bachelorDegreeUp = round(bachelorDegreeUp*totalPop2014);
+    highSchoolUp = round(highSchoolUp*totalPop2014);
+    belowPoverty = round(belowPoverty*totalPop2014);
+    
+    double FirstNationCount = round(FirstNation * totalPop2014);
+    double AsianCount = round(Asian * totalPop2014);
+    double BlackCount = round(Black * totalPop2014);
+    double LatinxCount = round(Latinx * totalPop2014);
+    double HIPacificIsleCount = round(HIPacificIsle * totalPop2014);
+    double MultiRaceCount = round(MultiRace * totalPop2014);
+    double WhiteCount = round(White * totalPop2014);
+    double WhiteNHCount = round(WhiteNH * totalPop2014);
 
     raceDemogData racialData(FirstNationCount, AsianCount, BlackCount, LatinxCount, HIPacificIsleCount, 
             MultiRaceCount, WhiteCount, WhiteNHCount, totalPop2014);

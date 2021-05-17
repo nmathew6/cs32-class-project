@@ -26,10 +26,10 @@ int main() {
     //}
     
     theAnswers.createComboDemogDataKey((std::vector<shared_ptr<demogData> >&)theDemogData);
-    cout << *theAnswers.getComboDemogData("KeyBelowPovAboveThirtyPer");
+    cout << *theAnswers.getComboDemogData("KeyBelowPovLessTenPer");
 
     theAnswers.createComboPoliceDataKey((std::vector<shared_ptr<psData> >&)thePoliceData);
-    cout << *theAnswers.getComboPoliceData("KeyAsianVictim");
+    //cout << *theAnswers.getComboPoliceData("KeyAsianVictim");
     // theAnswers.createComboDemogData((std::vector<shared_ptr<demogData> >&)theDemogData);
     // theAnswers.createComboPoliceData((std::vector<shared_ptr<psData> >&)thePoliceData);
 

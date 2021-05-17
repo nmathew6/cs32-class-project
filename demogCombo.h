@@ -29,12 +29,12 @@ class demogCombo : public demogData {
   void setPovKey(string theKey) { povKey = theKey; }
 
   void addData(shared_ptr<demogData> a) { 
-    popOver65 = (a->getPopOver65Count()+getPopOver65Count())/(a->getPop()+getPop())*100.0;
-    popUnder18 = (a->getPopUnder18Count()+getPopUnder18Count())/(a->getPop()+getPop())*100.0;  
-    popUnder5 = (a->getPopUnder5Count()+getPopUnder5Count())/(a->getPop()+getPop())*100.0;
-    popBachelors = (a->getBAupCount()+getBAupCount())/(a->getPop()+getPop())*100.0; 
-    popHighSchool = (a->getHSupCount()+getHSupCount())/(a->getPop()+getPop())*100.0; 
-    belowPovertyLevel = (a->getPovCount()+getPovCount())/(a->getPop()+getPop())*100.0;
+    popOver65 += a->getPopOver65Count();
+    popUnder18 += a->getPopUnder18Count();  
+    popUnder5 += a->getPopUnder5Count();
+    popBachelors += a->getBAupCount(); 
+    popHighSchool += a->getHSupCount(); 
+    belowPovertyLevel += a->getPovCount();
     population += a->getPop(); 
     racialData += a->getRacialData();
     numCounties++;
